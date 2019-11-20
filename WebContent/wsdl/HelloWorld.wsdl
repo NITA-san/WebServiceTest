@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://server" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://server" xmlns:intf="http://server" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDLはApache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)によって生成されました / [en]-(WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT))-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://server" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="helloGuy">
+    <complexType>
+     <sequence>
+      <element name="in" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="helloGuyResponse">
+    <complexType>
+     <sequence>
+      <element name="helloGuyReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="helloGuyRequest">
+
+      <wsdl:part element="impl:helloGuy" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="helloGuyResponse">
+
+      <wsdl:part element="impl:helloGuyResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="HelloWorld">
+
+      <wsdl:operation name="helloGuy">
+
+         <wsdl:input message="impl:helloGuyRequest" name="helloGuyRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:helloGuyResponse" name="helloGuyResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="HelloWorldSoapBinding" type="impl:HelloWorld">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="helloGuy">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="helloGuyRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="helloGuyResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="HelloWorldService">
+
+      <wsdl:port binding="impl:HelloWorldSoapBinding" name="HelloWorld">
+
+         <wsdlsoap:address location="http://localhost:9080/WebServiceTest/services/HelloWorld"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
